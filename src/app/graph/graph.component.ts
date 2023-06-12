@@ -126,18 +126,15 @@ export class GraphComponent implements OnInit {
       chart: {
         animation: false
       },
-
       title: {
         text: "Color Opacity"
       },
-
       xAxis: {
         title: {
           text: 'Time (24 hours)'
         },
         categories: this.timeData
       },
-
       yAxis: {
         title: {
           text: 'Percentage (Opacity)'
@@ -146,7 +143,9 @@ export class GraphComponent implements OnInit {
         max: 100,
         endOnTick: false
       },
-
+      credits: {
+        enabled: false
+      },
       plotOptions: {
         series: {
           stickyTracking: false,
