@@ -1,0 +1,42 @@
+<div class=" m-5 text-center">
+    <div class="row">
+        <div class="col-lg-6 col-sm-12">
+            <div style="height: 500px;" class="overflow-auto">
+                <table class="table table-bordered table-hover">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Time (24HR format)</th>
+                            <th scope="col">Green</th>
+                            <th scope="col">Red</th>
+                            <th scope="col">Yellow</th>
+                            <th>Action</th>
+                            <th>Output Color</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of graphData;let i = index">
+                            <th scope="row">{{item.time}}</th>
+                            <td><input type="number" min="0" max="100" value={{item.green}} [(ngModel)]="item.green"
+                                    [ngModelOptions]="{standalone: true}"></td>
+                            <td><input type="number" min="0" max="100" value={{item.red}} [(ngModel)]="item.red"
+                                    [ngModelOptions]="{standalone: true}"></td>
+                            <td><input type="number" min="0" max="100" value={{item.yellow}} [(ngModel)]="item.yellow"
+                                    [ngModelOptions]="{standalone: true}" s></td>
+                            <td><button type="button" class="btn btn-outline-secondary btn-sm" (click)="editSeriesData(i,item)"><i
+                                        class="bi bi-pen"></i></button> </td>
+                            <td><input type="color" [disabled]="true" value={{item.output}}></td>
+                            <td><button type="button" class="btn btn-outline-secondary btn-sm" (click)="delete(i)"><i
+                                        class="bi bi-trash"></i></button> </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-lg-6 col-sm-12">
+            <highcharts-chart *ngIf="updateFlag" style="width: 100%; display: block" [Highcharts]="Highcharts"
+                [constructorType]="'chart'" [options]="chartOptions">
+            </highcharts-chart>
+        </div>
+    </div>
+</div>
